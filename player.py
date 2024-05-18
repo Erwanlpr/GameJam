@@ -1,8 +1,9 @@
 import pygame
 import os
-from init import WIDTH, HEIGHT 
+from init import WIDTH, HEIGHT
 
 class Player:
+
     def __init__(self, screen_width, screen_height):
         self.images_left = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(1, 5)]
         self.images_right = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(5, 9)]
