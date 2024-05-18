@@ -5,6 +5,7 @@ import os
 
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 
 WIDTH = 1920
 HEIGHT = 1080
@@ -13,6 +14,13 @@ pygame.init()
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Déplacement du joueur")
+font = pygame.font.SysFont(None, 60)
+
+def draw_text(text,font, color, surface, x, y):
+    text_object = font.render(text, True, color)
+    text_rect = text_object.get.rect()
+    text_rect.center = (y, x)
+    surface.blit(text_object, text_rect)
 
 bg = [pygame.transform.scale(pygame.image.load(os.path.join('assets/volcano', f"volcano{str(i)}.png")).convert(), (WIDTH, HEIGHT - 69)) for i in range(1, 17)]
 
@@ -44,11 +52,18 @@ print("%d\n", len(bg))
 nb = 0
 running = True
 while running:
-    #screen.fill(WHITE)
+    
+    mouse_pos = pygame.mouse.get_pos()
+    button_start = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 50, 200, 50)
+    pygame.draw.rect(screen, BLACK, button_start)
+    draw_text("Start", font, WHITE, screen, WIDTH // 2, HEIGHT // 2)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.K_ESCAPE:
+            print("STARTING GAME !")
+    pygame.display.update()
 
     keys = pygame.key.get_pressed()
     player.move_player(keys)
