@@ -1,20 +1,35 @@
 import pygame
-from init import *
+import os
+from init import WIDTH, HEIGHT 
 
 class Player:
     def __init__(self, screen_width, screen_height):
-        self.image = pygame.image.load('assets/jean-mich/jean-mich9.png')
+        self.images = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(1, 5)]
+        self.image = self.images[0]
         self.size = self.image.get_width()
         self.x = (screen_width - self.size) // 2
-        self.y = screen_height - self.image.get_height() - 80
+        self.y = screen_height - self.image.get_height() - 55
         self.speed = 10
+        self.animation_index = 0
+        self.animation_counter = 0
 
     def move_player(self, keys):
+        moved = False
+
         if keys[pygame.K_LEFT]:
             self.x -= self.speed
+            moved = True
         if keys[pygame.K_RIGHT]:
             self.x += self.speed
+            moved = True
 
         self.x = max(0, min(self.x, WIDTH - self.size))
+
+        if moved:
+            self.animation_counter += 1
+            if self.animation_counter > 5:
+                self.animation_counter = 0
+                self.animation_index = (self.animation_index + 1) % len(self.images)
+                self.image = self.images[self.animation_index]
 
 player = Player(WIDTH, HEIGHT)
