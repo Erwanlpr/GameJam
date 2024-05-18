@@ -7,6 +7,8 @@ from player import *
 
 pygame.init()
 
+player.zoom(2)
+
 while RUNNING:
     
     for event in pygame.event.get():

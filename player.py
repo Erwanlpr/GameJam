@@ -8,9 +8,10 @@ class Player:
         self.images_right = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(5, 9)]
         self.image_neutral = pygame.image.load(os.path.join('assets/jean-mich', "jean-mich9.png"))
         self.image = self.image_neutral
-        self.size = self.image.get_width()
-        self.x = (screen_width - self.size) // 2
-        self.y = screen_height - self.image.get_height() - 55
+        self.original_size = self.image.get_size()
+        self.size = self.original_size
+        self.x = (screen_width - self.size[0]) // 2
+        self.y = screen_height - self.size[1] - 55
         self.speed = 10
         self.animation_index = 0
         self.animation_counter = 0
@@ -28,7 +29,7 @@ class Player:
             moved = True
             self.direction = 'right'
 
-        self.x = max(0, min(self.x, WIDTH - self.size))
+        self.x = max(0, min(self.x, WIDTH - self.size[0]))
 
         if moved:
             self.animation_counter += 1
@@ -41,5 +42,14 @@ class Player:
                     self.image = self.images_left[self.animation_index]
         else:
             self.image = self.image_neutral
+
+    def zoom(self, scale_factor):
+        self.size = (int(self.original_size[0] * scale_factor), int(self.original_size[1] * scale_factor))
+        self.images_left = [pygame.transform.scale(img, self.size) for img in self.images_left]
+        self.images_right = [pygame.transform.scale(img, self.size) for img in self.images_right]
+        self.image_neutral = pygame.transform.scale(self.image_neutral, self.size)
+        self.image = self.image_neutral if self.direction == 'neutral' else self.images_right[0] if self.direction == 'right' else self.images_left[0]
+        self.x = (WIDTH - self.size[0]) // 2
+        self.y = HEIGHT - self.size[1] - 55
 
 player = Player(WIDTH, HEIGHT)
