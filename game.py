@@ -16,6 +16,7 @@ while RUNNING:
     keys = pygame.key.get_pressed()
     player.move_player(keys)
     screen.blit(bg[int(nb / 9 % 15)], (0,0))
+    screen.blit(player.image, (player.x, player.y))
     nb += 1
 
     pygame.display.flip()
