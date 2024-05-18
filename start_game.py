@@ -14,7 +14,7 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Déplacement du joueur")
 
-bg = [pygame.transform.scale(pygame.image.load(os.path.join('assets', f"volcano{str(i)}.png")).convert(), (WIDTH, HEIGHT - 69)) for i in range(1, 17)]
+bg = [pygame.transform.scale(pygame.image.load(os.path.join('assets/volcano', f"volcano{str(i)}.png")).convert(), (WIDTH, HEIGHT - 69)) for i in range(1, 17)]
 
 class Player:
     def __init__(self, screen_width, screen_height):
