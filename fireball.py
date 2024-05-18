@@ -7,7 +7,7 @@ from init import *
 class Fireball:
     
     def __init__(self):
-        self.x = randint(10, WIDTH - 10)
+        self.x = randint(0, WIDTH - 5)
         self.y = -10
         self.speed = randint(3, 10)
         self.img = [pygame.image.load(os.path.join('assets/fireball', f"fireball{i}.png")) for i in range(1, 6)]
@@ -20,7 +20,7 @@ class Fireball:
                 self.index = -1
             self.index += 1
         else:
-            self.x = randint(10, WIDTH - 10)
+            self.x = randint(0, WIDTH - 5)
             self.y = -10
 
 list_fireball = []

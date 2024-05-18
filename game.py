@@ -15,7 +15,7 @@ while RUNNING:
         if event.type == pygame.QUIT:
             RUNNING = False
 
-    if (len(list_fireball) < 15):
+    if (len(list_fireball) < 10):
         list_fireball.append(Fireball())
     keys = pygame.key.get_pressed()
     player.move_player(keys)
