@@ -5,17 +5,13 @@ import os
 from init import *
 from player import *
 from fireball import *
-from menu import *
 from collision import collision
+from menu import *
 
 pygame.init()
 
-screen.blit(menu_bg, (0, 0))
-screen.blit(start_button, button_rect.topleft)
-pygame.display.flip()
-clock.tick(60)
-main_menu()
-menu.zoom(5)
+menu = Menu()
+menu.main_menu(1, 0.15)
 player.zoom(2)
 
 while RUNNING:
