@@ -17,7 +17,7 @@ class GameOver:
 
     def show(self, screen):
         while True:
-            screen.fill((0, 0, 0))  # Fond noir
+            screen.fill((0, 0, 0))
             screen.blit(self.game_over_text, self.game_over_rect)
             pygame.draw.rect(screen, self.button_color, self.restart_button_rect.inflate(20, 20))
             screen.blit(self.restart_button_text, self.restart_button_rect)
