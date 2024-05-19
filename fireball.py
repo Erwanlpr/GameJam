@@ -11,6 +11,7 @@ class Fireball:
         self.y = -200
         self.speed = randint(3, 15)
         self.img = [pygame.image.load(os.path.join('assets/fireball', f"fireball{i}.png")) for i in range(1, 6)]
+        self.hit = [pygame.image.load(os.path.join('assets/collision', f"collision{i}.png")) for i in range(1, 15)]
         self.size = self.img[0].get_size()
         self.index = 0
 
@@ -21,6 +22,8 @@ class Fireball:
                 self.index = -1
             self.index += 1
         else:
+            for i in range(len(self.hit) - 1):
+                screen.blit(self.hit[i], (self.x, self.y))
             self.x = randint(0, WIDTH - 5)
             self.y = -200
 
