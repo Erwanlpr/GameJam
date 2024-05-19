@@ -21,6 +21,7 @@ class Player:
         self.animation_counter = 0
         self.direction = 'neutral'
         self.life = 3
+        self.nb_torch = 0
 
     def drawing_life(self):
         self.position_life[0] = 10

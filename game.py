@@ -7,9 +7,11 @@ from player import *
 from fireball import *
 from collision import collision
 from menu import *
+from win import *
 
 pygame.init()
 
+olympic_torch = Torch()
 menu = Menu()
 menu.main_menu(1, 0.15)
 player.zoom(2)
@@ -42,6 +44,9 @@ while RUNNING:
     nb += 1
     player.drawing_life()
 
+    if (total_mins % 5 == 0):
+        olympic_torch.movement()
+        screen.blit(olympic_torch.img, (olympic_torch.x, olympic_torch.y))
     if (total_secs > 9):
         screen.blit(font.render((str(total_mins)+":"+str(total_secs)), True, WHITE), (WIDTH - 150, 15))
     else:
