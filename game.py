@@ -62,6 +62,7 @@ while RUNNING:
         game_over = True
         game_over_screen.show(screen)
         player = Player(WIDTH, HEIGHT)
+        player.zoom(2)
         list_fireball = []
         total_secs = 0
         total_mins = 0
