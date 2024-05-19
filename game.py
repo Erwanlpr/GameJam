@@ -15,6 +15,7 @@ screen.blit(start_button, button_rect.topleft)
 pygame.display.flip()
 clock.tick(60)
 main_menu()
+menu.zoom(5)
 player.zoom(2)
 
 while RUNNING:
