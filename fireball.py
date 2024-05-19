@@ -15,7 +15,7 @@ class Fireball:
         self.index = 0
 
     def movement(self):
-        if (self.y < (HEIGHT - 50)):
+        if (self.y < (HEIGHT - 50 - self.size[1])):
             self.y += self.speed
             if (self.index > 3):
                 self.index = -1
