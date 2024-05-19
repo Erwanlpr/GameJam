@@ -6,7 +6,7 @@ from init import *
 from player import *
 from fireball import *
 from collision import collision
-from menu import *
+from menu import Menu
 from win import *
 from game_over import GameOver
 from win_endgame import GameWinner
@@ -19,7 +19,7 @@ game_over_screen = GameOver()
 game_over = False
 game_winner = GameWinner()
 menu = Menu()
-menu.main_menu(1, 0.15)
+menu.main_menu(screen, 1, 0.15)
 player.zoom(2)
 total_secs = 0
 total_mins = 0
