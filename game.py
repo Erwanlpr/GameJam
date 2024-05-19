@@ -9,6 +9,12 @@ from menu import *
 from collision import collision
 
 pygame.init()
+
+screen.blit(menu_bg, (0, 0))
+screen.blit(start_button, button_rect.topleft)
+pygame.display.flip()
+clock.tick(60)
+main_menu()
 player.zoom(2)
 
 while RUNNING:
