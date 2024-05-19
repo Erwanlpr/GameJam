@@ -17,6 +17,7 @@ class Player:
         self.animation_index = 0
         self.animation_counter = 0
         self.direction = 'neutral'
+        self.life = 3
 
     def move_player(self, keys):
         moved = False
