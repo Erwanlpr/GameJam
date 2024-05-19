@@ -49,7 +49,7 @@ while RUNNING:
     nb += 1
     player.drawing_life()
 
-    if (total_mins % 2 == 0 and total_mins > 0 and total_secs == 0):
+    if (total_mins % 1 == 0 and total_mins > 0 and total_secs == 0):
         olympic_torch.check = 1
     olympic_torch.position()
     olympic_torch.win_collision(player)
@@ -60,7 +60,7 @@ while RUNNING:
 
     if player.life <= 0:
         game_over = True
-        game_over_screen.show(screen)
+        game_over_screen.show(screen, total_mins, total_secs)
         player = Player(WIDTH, HEIGHT)
         player.zoom(2)
         list_fireball = []

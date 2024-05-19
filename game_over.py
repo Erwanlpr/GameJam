@@ -25,9 +25,11 @@ class GameOver:
         self.restart_button_rect = self.restart_button_text.get_rect(center=(WIDTH // 2, HEIGHT // 1.8))
         self.button_color = (0, 0, 0)
 
-    def show(self, screen):
+    def show(self, screen, minute, second):
         clock = pygame.time.Clock()
         while True:
+            time_text = self.font_medium.render(f"You Survived: {minute}m:{second}s", True, (255, 0, 0))
+            time_rect = time_text.get_rect(center=(WIDTH // 2, HEIGHT // 5))
             screen.fill((0, 0, 0))
             screen.blit(self.game_over_text, self.game_over_rect)
 
@@ -42,6 +44,11 @@ class GameOver:
 
             pygame.draw.rect(screen, self.button_color, self.restart_button_rect.inflate(20, 20))
             screen.blit(self.restart_button_text, self.restart_button_rect)
+            
+            pygame.draw.rect(screen, self.button_color, time_rect.inflate(20, 20))
+            screen.blit(time_text, time_rect)
+            
+            screen.blit(time_text, time_rect)
             
             pygame.display.flip()
             clock.tick(40)
