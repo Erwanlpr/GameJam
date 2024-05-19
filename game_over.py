@@ -31,12 +31,10 @@ class GameOver:
             screen.fill((0, 0, 0))
             screen.blit(self.game_over_text, self.game_over_rect)
 
-            # Mettre à jour la position d'Edward
             self.edward_x += self.edward_speed
             if self.edward_x > WIDTH:
                 self.edward_x = -self.edward[self.edward_index].get_width()
 
-            # Dessiner Edward et son texte
             self.edward_index = (self.edward_index + 1) % len(self.edward)
             screen.blit(self.edward[self.edward_index], (self.edward_x, self.edward_y))
             edward_text_rect = self.edward_text.get_rect(center=(self.edward_x + self.edward[self.edward_index].get_width() // 2, self.edward_y - 30))
