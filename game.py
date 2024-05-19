@@ -8,11 +8,14 @@ from fireball import *
 from collision import collision
 from menu import *
 from win import *
+from game_over import GameOver
 
 pygame.init()
 
 olympic_torch = Torch()
 check = 1
+game_over_screen = GameOver()
+game_over = False
 menu = Menu()
 menu.main_menu(1, 0.15)
 player.zoom(2)
@@ -54,15 +57,18 @@ while RUNNING:
         screen.blit(font.render((str(total_mins)+":"+str(total_secs)), True, WHITE), (WIDTH - 150, 15))
     else:
         screen.blit(font.render((str(total_mins)+":0"+str(total_secs)), True, WHITE), (WIDTH - 150, 15))
-    if (player.life <= 0 or player.nb_torch >= 3):
-        break
+
+    if player.life <= 0:
+        game_over = True
+        game_over_screen.show(screen)
+        player = Player(WIDTH, HEIGHT)
+        list_fireball = []
+        total_secs = 0
+        total_mins = 0
+        nb = 0
+        game_over = False
     pygame.display.flip()
     clock.tick(60)
-
-#if (player.life <= 0):
-    #GAME OVER
-#else:
-    #CONGRATULATION
 
 pygame.quit()
 sys.exit()
