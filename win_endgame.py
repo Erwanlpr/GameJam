@@ -21,7 +21,7 @@ class GameWinner:
         self.edward_y = HEIGHT // 1.2
         self.edward_speed = 5
 
-        self.restart_button_text = self.font_small.render("Restart", True, (255, 255, 255))
+        self.restart_button_text = self.font_small.render("Restart", True, (0, 0, 0))
         self.restart_button_rect = self.restart_button_text.get_rect(center=(WIDTH // 2, HEIGHT // 1.8))
         self.button_color = (255, 255, 255)
 
