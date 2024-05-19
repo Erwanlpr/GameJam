@@ -5,12 +5,13 @@ import os
 from init import *
 from player import *
 from fireball import *
+from menu import *
 
 pygame.init()
 player.zoom(2)
 
 while RUNNING:
-    
+        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             RUNNING = False
