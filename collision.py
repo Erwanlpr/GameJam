@@ -8,10 +8,12 @@ def is_touch(player : Player, fireball : Fireball) -> bool:
         return False
     if ((fireball.x) > (player.x + player.size[0] - 30)):
         return False
+    if (fireball.y > player.y):
+        return False
     return True
 
 def collision(player : Player, fireball):
-    for i in range(len(fireball)):
+    for i in range(len(fireball) - 1):
         if (is_touch(player, fireball[i]) == True):
             player.life -= 1
             fireball.pop(i)

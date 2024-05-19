@@ -23,7 +23,7 @@ while RUNNING:
         if event.type == pygame.QUIT:
             RUNNING = False
 
-    if (len(list_fireball) < 1):
+    if (len(list_fireball) < 10):
         list_fireball.append(Fireball())
     keys = pygame.key.get_pressed()
     collision(player, list_fireball)
