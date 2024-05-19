@@ -9,6 +9,7 @@ from collision import collision
 from menu import *
 from win import *
 from game_over import GameOver
+from win_endgame import GameWinner
 
 pygame.init()
 
@@ -16,6 +17,7 @@ olympic_torch = Torch()
 check = 1
 game_over_screen = GameOver()
 game_over = False
+game_winner = GameWinner()
 menu = Menu()
 menu.main_menu(1, 0.15)
 player.zoom(2)
@@ -68,6 +70,14 @@ while RUNNING:
         total_mins = 0
         nb = 0
         game_over = False
+    if player.nb_torch >= 3:
+        game_winner.show(screen, total_mins, total_secs)
+        player = Player(WIDTH, HEIGHT)
+        player.zoom(2)
+        list_fireball = []
+        total_secs = 0
+        total_mins = 0
+        nb = 0
     pygame.display.flip()
     clock.tick(60)
 

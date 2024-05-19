@@ -10,7 +10,7 @@ class Torch:
     def __init__(self):
         self.x = randint(0, WIDTH - 5)
         self.y = -200
-        self.speed = 8
+        self.speed = 6
         self.img = pygame.image.load(os.path.join('assets', 'torch.png'))
         self.size = self.img.get_size()
         self.check = 0
