@@ -55,6 +55,7 @@ while RUNNING:
         olympic_torch.check = 1
     olympic_torch.position()
     olympic_torch.win_collision(player)
+    olympic_torch.nb_torch(player)
     if (total_secs > 9):
         screen.blit(font.render((str(total_mins)+":"+str(total_secs)), True, WHITE), (WIDTH - 150, 15))
     else:

@@ -22,6 +22,13 @@ class Torch:
         self.size = (int(self.size[0] * scale_factor), int(self.size[1] * scale_factor))
         self.img = pygame.transform.scale(self.img, self.size)
         
+    def nb_torch(self, player : Player):
+        pos_x = -15
+        pos_y = 100
+        for i in range(player.nb_torch):
+            screen.blit(self.img, (pos_x, pos_y))
+            pos_x += 95
+
     def position(self):
         if (self.check == 0):
             self.y = -200
