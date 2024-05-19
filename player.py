@@ -1,6 +1,6 @@
 import pygame
 import os
-from init import WIDTH, HEIGHT
+from init import *
 
 class Player:
 
@@ -8,16 +8,25 @@ class Player:
         self.images_left = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(1, 5)]
         self.images_right = [pygame.image.load(os.path.join('assets/jean-mich', f"jean-mich{i}.png")) for i in range(5, 9)]
         self.image_neutral = pygame.image.load(os.path.join('assets/jean-mich', "jean-mich9.png"))
+        self.image_life = pygame.image.load(os.path.join('assets/life', '1life.png'))
         self.image = self.image_neutral
         self.original_size = self.image.get_size()
         self.size = self.original_size
         self.x = (screen_width - self.size[0]) // 2
         self.y = screen_height - self.size[1] - 55
+        self.position_life = [10, 10]
+        self.size_life = self.image_life.get_size()
         self.speed = 10
         self.animation_index = 0
         self.animation_counter = 0
         self.direction = 'neutral'
         self.life = 3
+
+    def drawing_life(self):
+        self.position_life[0] = 10
+        for i in range(self.life):
+            screen.blit(self.image_life, tuple(self.position_life))
+            self.position_life[0] += self.size_life[0] + 5
 
     def move_player(self, keys):
         moved = False

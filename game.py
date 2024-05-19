@@ -31,6 +31,7 @@ while RUNNING:
         list_fireball[i].movement()
         screen.blit(list_fireball[i].img[list_fireball[i].index], (list_fireball[i].x, list_fireball[i].y))
     nb += 1
+    player.drawing_life()
 
     if (player.life <= 0):
         break
